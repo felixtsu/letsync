@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Let sync!</title>
+    <style type="text/css">
+        .top, .middle {
+            text-align: left;
+            font-size: 24pt;
+            font-weight: bold;
+            margin: 50px 100px;
+        }
+
+        .middle {
+            font-size: 12pt;
+            font-weight: normal;
+        }
+
+        .bottom {
+            text-align: right;
+            font-size: 10pt;
+            margin-top: 50px;
+            margin-right: 200px;
+        }
+
+
+    </style>
+
+</head>
+<body style="background-color:#ffebcd;height:100%;">
+<div style="vertical-align: middle;text-align: center; height:100%;">
+    <div class="top">
+        Let's-ync!
+    </div>
+
+    <div class="middle">
+            name:
+            <input type="text" name="username"/>
+            password:
+            <input type="password" name="passwd"/>
+            <input type="button" onclick="login()" value="log in"/>
+    </div>
+    </br>
+    <div class="bottom">
+        Let's-ync! currently under beta testing, email humaeks at gmail.com for an
+        account
+    </div>
+
+</div>
+
+
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+
+
+    var hasText = function(str) {
+        return $.trim(str).length != 0;
+    };
+    var login = function() {
+        var username = $("[name ='username']")[0].value;
+        var passwd = $("[name='passwd']")[0].value;
+
+        if (!hasText(username) || !hasText(passwd)) {
+            alert('type in username and (or) password.');
+            return;
+        }
+
+        $.ajax('./acl/login.go', {
+            type : 'post',
+            data : {
+                username : username,
+                passwd : passwd
+            },
+            success : function(resp) {
+                if (resp.success) {
+                    window.location.href = './static/auth.html';
+
+                } else {
+                    alert(resp.message);
+                }
+            }
+        });
+
+    };
+</script>
+</body>
+</html>

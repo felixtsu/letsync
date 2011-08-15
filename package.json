@@ -1,0 +1,10 @@
+{
+    "name" : "letsync",
+    "version" :"0.0.1",
+    "dependencies": {
+        "express" : "",
+        "redis" :"",
+        "connect-redis":"",
+        "cron" :""
+    }
+}

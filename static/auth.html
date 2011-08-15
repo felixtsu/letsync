@@ -1,0 +1,20 @@
+<html>
+<head>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" language="JavaScript">
+        function renren() {
+            window.location.href = 'https://graph.renren.com/oauth/authorize'
+                    + '?scope=status_update'
+                    + '&client_id=d941e168e5ea491e8c4895dd88225bde'
+                    + '&redirect_uri=http://letsync.cloudfoundry.com/renren/authCode.go'
+                    + '&response_type=code';
+        }
+    </script>
+</head>
+<body>
+<a onclick="renren()">auth renren.</a>
+<script type="text/javascript" language="javascript">
+</script>
+</body>
+</html>
